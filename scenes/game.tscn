@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbsjisk2gblqf"]
+[gd_scene load_steps=11 format=3 uid="uid://dbsjisk2gblqf"]
 
 [ext_resource type="PackedScene" uid="uid://fjwwpfeko8bi" path="res://scenes/player.tscn" id="1_esqln"]
 [ext_resource type="Texture2D" uid="uid://bg2kn35toetdp" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="2_x8hnj"]
 [ext_resource type="PackedScene" uid="uid://dcn2wx6n0e4g6" path="res://scenes/platform.tscn" id="3_qkp7a"]
+[ext_resource type="PackedScene" uid="uid://d0lvoxcl4hlp0" path="res://scenes/killzone.tscn" id="4_lpp18"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7c8fo"]
 texture = ExtResource("2_x8hnj")
@@ -208,6 +209,8 @@ _data = {
 "move": SubResource("Animation_tgxxc")
 }
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_um3df"]
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -235,3 +238,10 @@ libraries = {
 "": SubResource("AnimationLibrary_nbum4")
 }
 autoplay = "move"
+
+[node name="Killzone" parent="." instance=ExtResource("4_lpp18")]
+position = Vector2(220, 120)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("WorldBoundaryShape2D_um3df")
