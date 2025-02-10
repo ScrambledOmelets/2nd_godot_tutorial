@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbsjisk2gblqf"]
+[gd_scene load_steps=12 format=3 uid="uid://dbsjisk2gblqf"]
 
 [ext_resource type="PackedScene" uid="uid://fjwwpfeko8bi" path="res://scenes/player.tscn" id="1_esqln"]
 [ext_resource type="Texture2D" uid="uid://bg2kn35toetdp" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="2_x8hnj"]
@@ -211,6 +211,9 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_um3df"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smk58"]
+size = Vector2(112, 18)
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -245,3 +248,11 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_um3df")
+
+[node name="Killzone2" parent="." instance=ExtResource("4_lpp18")]
+position = Vector2(440, 53)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone2"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_smk58")
