@@ -232,3 +232,4 @@ position = Vector2(361, -50)
 libraries = {
 "": SubResource("AnimationLibrary_nbum4")
 }
+autoplay = "move"
