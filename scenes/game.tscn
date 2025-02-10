@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbsjisk2gblqf"]
+[gd_scene load_steps=9 format=3 uid="uid://dbsjisk2gblqf"]
 
 [ext_resource type="PackedScene" uid="uid://fjwwpfeko8bi" path="res://scenes/player.tscn" id="1_esqln"]
 [ext_resource type="Texture2D" uid="uid://bg2kn35toetdp" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="2_x8hnj"]
@@ -170,6 +170,44 @@ texture = ExtResource("2_x8hnj")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7c8fo")
 
+[sub_resource type="Animation" id="Animation_tgxxc"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(361, -50), Vector2(498, -50)]
+}
+
+[sub_resource type="Animation" id="Animation_c7yq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(361, -50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nbum4"]
+_data = {
+"RESET": SubResource("Animation_c7yq1"),
+"move": SubResource("Animation_tgxxc")
+}
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -185,4 +223,12 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="Platform" parent="." instance=ExtResource("3_qkp7a")]
-position = Vector2(93, 1)
+position = Vector2(78, -26)
+
+[node name="Platform2" parent="." instance=ExtResource("3_qkp7a")]
+position = Vector2(361, -50)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2"]
+libraries = {
+"": SubResource("AnimationLibrary_nbum4")
+}
